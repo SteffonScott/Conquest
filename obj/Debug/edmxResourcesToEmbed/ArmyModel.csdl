@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GameDataModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="Entities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Armies" EntityType="GameDataModel.Army" />
+  </EntityContainer>
+  <EntityType Name="Army">
+    <Key>
+      <PropertyRef Name="ArmyId" />
+    </Key>
+    <Property Name="ArmyId" Type="Int32" Nullable="false" />
+    <Property Name="Enlist" Type="Int32" Nullable="false" />
+    <Property Name="Support" Type="Int32" Nullable="false" />
+    <Property Name="Ranged" Type="Int32" Nullable="false" />
+    <Property Name="Special" Type="Int32" Nullable="false" />
+    <Property Name="Siege" Type="Int32" Nullable="false" />
+    <Property Name="Elite" Type="Int32" Nullable="false" />
+    <Property Name="Surrender" Type="Double" Nullable="false" />
+    <Property Type="Int32" Name="PlayerId" Nullable="false" />
+  </EntityType>
+</Schema>

@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GameDataModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="GameDataEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Kingdoms" EntityType="GameDataModel.Kingdom" />
+    <EntitySet Name="Players" EntityType="GameDataModel.Player" />
+    <AssociationSet Name="FK_Kingdoms_Players" Association="GameDataModel.FK_Kingdoms_Players">
+      <End Role="Players" EntitySet="Players" />
+      <End Role="Kingdoms" EntitySet="Kingdoms" />
+    </AssociationSet>
+    <EntitySet Name="Armies" EntityType="GameDataModel.Army" />
+    <AssociationSet Name="KingdomArmy" Association="GameDataModel.KingdomArmy">
+      <End Role="Kingdom" EntitySet="Kingdoms" />
+      <End Role="Army" EntitySet="Armies" />
+    </AssociationSet>
+    <EntitySet Name="Vaults" EntityType="GameDataModel.Vault" />
+    <AssociationSet Name="KingdomVault" Association="GameDataModel.KingdomVault">
+      <End Role="Kingdom" EntitySet="Kingdoms" />
+      <End Role="Vault" EntitySet="Vaults" />
+    </AssociationSet>
+    <EntitySet Name="Items" EntityType="GameDataModel.Item" />
+    <AssociationSet Name="VaultItem" Association="GameDataModel.VaultItem">
+      <End Role="Vault" EntitySet="Vaults" />
+      <End Role="Item" EntitySet="Items" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Kingdom">
+    <Key>
+      <PropertyRef Name="KingdomId" />
+    </Key>
+    <Property Name="KingdomId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Structures" Type="Int32" />
+    <Property Name="Currency" Type="Int32" />
+    <Property Name="Land" Type="Int32" />
+    <Property Name="Workers" Type="Int32" />
+    <Property Name="Food" Type="Int32" />
+    <Property Name="Protection" Type="Int32" />
+    <Property Name="Level" Type="Int32" />
+    <Property Name="Honor" Type="Int32" />
+    <Property Name="KingdomName" Type="String" MaxLength="16" Unicode="true" FixedLength="false" />
+    <Property Name="Taxrate" Type="GameDataModel.Tax" />
+    <Property Name="Continent" Type="Int32" />
+    <Property Name="PlayerId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Player" Relationship="GameDataModel.FK_Kingdoms_Players" FromRole="Kingdoms" ToRole="Players" />
+    <NavigationProperty Name="Army" Relationship="GameDataModel.KingdomArmy" FromRole="Kingdom" ToRole="Army" />
+    <NavigationProperty Name="Vault" Relationship="GameDataModel.KingdomVault" FromRole="Kingdom" ToRole="Vault" />
+  </EntityType>
+  <EntityType Name="Player">
+    <Key>
+      <PropertyRef Name="PlayerId" />
+    </Key>
+    <Property Name="PlayerId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="12" Unicode="true" FixedLength="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="Remorts" Type="Int32" Nullable="false" />
+    <Property Name="Gender" Type="GameDataModel.Gender" Nullable="false" />
+    <Property Name="PlayerClass" Type="GameDataModel.PlayerClass" Nullable="false" />
+    <NavigationProperty Name="Kingdom" Relationship="GameDataModel.FK_Kingdoms_Players" FromRole="Players" ToRole="Kingdoms" />
+    <Property Type="Int32" Name="CurrentCont" Nullable="false" />
+    <Property Type="Int32" Name="NumAttacks" Nullable="false" />
+    <Property Type="Int32" Name="Movement" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Kingdoms_Players">
+    <End Role="Players" Type="GameDataModel.Player" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Kingdoms" Type="GameDataModel.Kingdom" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Players">
+        <PropertyRef Name="PlayerId" />
+      </Principal>
+      <Dependent Role="Kingdoms">
+        <PropertyRef Name="PlayerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Army">
+    <Key>
+      <PropertyRef Name="KingdomId" />
+    </Key>
+    <Property Type="Int32" Name="KingdomId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="cEnlisted" />
+    <Property Type="Int32" Name="cSupport" />
+    <Property Type="Int32" Name="cRanged" />
+    <Property Type="Int32" Name="cSpecial" />
+    <Property Type="Int32" Name="cSiege" />
+    <Property Type="Int32" Name="cElite" />
+    <Property Type="Int32" Name="dEnlisted" />
+    <Property Type="Int32" Name="dSupport" />
+    <Property Type="Int32" Name="dRanged" />
+    <Property Type="Int32" Name="dSpecial" />
+    <Property Type="Int32" Name="dSiege" />
+    <Property Type="Int32" Name="dElite" />
+    <Property Type="Double" Name="Surrender" />
+    <Property Type="Int32" Name="ArmyClass" />
+    <NavigationProperty Name="Kingdom" Relationship="GameDataModel.KingdomArmy" FromRole="Army" ToRole="Kingdom" />
+  </EntityType>
+  <Association Name="KingdomArmy">
+    <End Type="GameDataModel.Kingdom" Role="Kingdom" Multiplicity="1" />
+    <End Type="GameDataModel.Army" Role="Army" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Kingdom">
+        <PropertyRef Name="KingdomId" />
+      </Principal>
+      <Dependent Role="Army">
+        <PropertyRef Name="KingdomId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EnumType Name="PlayerClass" a:ExternalTypeName="Conquest.PlayerClass" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+  <EnumType Name="Tax" a:ExternalTypeName="Conquest.Tax" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+  <EnumType Name="Gender" a:ExternalTypeName="Conquest.Gender" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+  <EntityType Name="Vault">
+    <Key>
+      <PropertyRef Name="KingdomId" />
+    </Key>
+    <Property Type="Int32" Name="KingdomId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Kingdom" Relationship="GameDataModel.KingdomVault" FromRole="Vault" ToRole="Kingdom" />
+    <Property Type="Int32" Name="VaultId" Nullable="false" />
+    <NavigationProperty Name="Items" Relationship="GameDataModel.VaultItem" FromRole="Vault" ToRole="Item" />
+  </EntityType>
+  <Association Name="KingdomVault">
+    <End Type="GameDataModel.Kingdom" Role="Kingdom" Multiplicity="1" />
+    <End Type="GameDataModel.Vault" Role="Vault" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Kingdom">
+        <PropertyRef Name="KingdomId" />
+      </Principal>
+      <Dependent Role="Vault">
+        <PropertyRef Name="KingdomId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Item">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Movement" Nullable="false" />
+    <Property Type="GameDataModel.ItemType" Name="Type" Nullable="false" />
+    <Property Type="Int32" Name="VaultId" Nullable="false" />
+    <NavigationProperty Name="Vault" Relationship="GameDataModel.VaultItem" FromRole="Item" ToRole="Vault" />
+  </EntityType>
+  <Association Name="VaultItem">
+    <End Type="GameDataModel.Vault" Role="Vault" Multiplicity="1" />
+    <End Type="GameDataModel.Item" Role="Item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vault">
+        <PropertyRef Name="KingdomId" />
+      </Principal>
+      <Dependent Role="Item">
+        <PropertyRef Name="VaultId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EnumType Name="ItemType" a:ExternalTypeName="Conquest.Players.Items.ItemType" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+</Schema>

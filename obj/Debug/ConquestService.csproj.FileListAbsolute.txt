@@ -1,0 +1,10 @@
+c:\CQG\ConquestGame\ConquestService\bin\ConquestService.dll
+c:\CQG\ConquestGame\ConquestService\bin\ConquestService.pdb
+c:\CQG\ConquestGame\ConquestService\obj\Debug\ConquestService.dll
+c:\CQG\ConquestGame\ConquestService\obj\Debug\ConquestService.pdb
+c:\CQG\ConquestGame\ConquestService\bin\EntityFramework.dll
+c:\CQG\ConquestGame\ConquestService\bin\EntityFramework.xml
+C:\CQG\ConquestGame\ConquestService\bin\Ninject.dll
+C:\CQG\ConquestGame\ConquestService\bin\Ninject.pdb
+C:\CQG\ConquestGame\ConquestService\bin\Ninject.xml
+C:\CQG\ConquestGame\ConquestService\obj\Debug\ConquestService.csprojResolveAssemblyReference.cache

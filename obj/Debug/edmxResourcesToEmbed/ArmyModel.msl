@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GameDataModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="Armies">
+      <EntityTypeMapping TypeName="GameDataModel.Army">
+        <MappingFragment StoreEntitySet="Armies">
+          <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
+          <ScalarProperty Name="ArmyId" ColumnName="ArmyId" />
+          <ScalarProperty Name="Enlist" ColumnName="Enlist" />
+          <ScalarProperty Name="Support" ColumnName="Support" />
+          <ScalarProperty Name="Ranged" ColumnName="Ranged" />
+          <ScalarProperty Name="Special" ColumnName="Special" />
+          <ScalarProperty Name="Siege" ColumnName="Siege" />
+          <ScalarProperty Name="Elite" ColumnName="Elite" />
+          <ScalarProperty Name="Surrender" ColumnName="Surrender" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GameDataModelStoreContainer" CdmEntityContainer="GameDataEntities">
+    <EntitySetMapping Name="Kingdoms">
+      <EntityTypeMapping TypeName="GameDataModel.Kingdom">
+        <MappingFragment StoreEntitySet="Kingdoms">
+          <ScalarProperty Name="KingdomId" ColumnName="KingdomId" />
+          <ScalarProperty Name="Structures" ColumnName="Structures" />
+          <ScalarProperty Name="Currency" ColumnName="Currency" />
+          <ScalarProperty Name="Land" ColumnName="Land" />
+          <ScalarProperty Name="Workers" ColumnName="Workers" />
+          <ScalarProperty Name="Food" ColumnName="Food" />
+          <ScalarProperty Name="Protection" ColumnName="Protection" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="Honor" ColumnName="Honor" />
+          <ScalarProperty Name="KingdomName" ColumnName="KingdomName" />
+          <ScalarProperty Name="Taxrate" ColumnName="Taxrate" />
+          <ScalarProperty Name="Continent" ColumnName="Continent" />
+          <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Players">
+      <EntityTypeMapping TypeName="GameDataModel.Player">
+        <MappingFragment StoreEntitySet="Players">
+          <ScalarProperty Name="Movement" ColumnName="Movement" />
+          <ScalarProperty Name="NumAttacks" ColumnName="NumAttacks" />
+          <ScalarProperty Name="CurrentCont" ColumnName="CurrentCont" />
+          <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Remorts" ColumnName="Remorts" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="PlayerClass" ColumnName="PlayerClass" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Armies">
+      <EntityTypeMapping TypeName="IsTypeOf(GameDataModel.Army)">
+        <MappingFragment StoreEntitySet="Kingdoms">
+          <ScalarProperty Name="ArmyClass" ColumnName="ArmyClass" />
+          <ScalarProperty Name="Surrender" ColumnName="Surrender" />
+          <ScalarProperty Name="dElite" ColumnName="dElite" />
+          <ScalarProperty Name="dSiege" ColumnName="dSiege" />
+          <ScalarProperty Name="dSpecial" ColumnName="dSpecial" />
+          <ScalarProperty Name="dRanged" ColumnName="dRanged" />
+          <ScalarProperty Name="dSupport" ColumnName="dSupport" />
+          <ScalarProperty Name="dEnlisted" ColumnName="dEnlisted" />
+          <ScalarProperty Name="cElite" ColumnName="cElite" />
+          <ScalarProperty Name="cSiege" ColumnName="cSiege" />
+          <ScalarProperty Name="cSpecial" ColumnName="cSpecial" />
+          <ScalarProperty Name="cRanged" ColumnName="cRanged" />
+          <ScalarProperty Name="cSupport" ColumnName="cSupport" />
+          <ScalarProperty Name="cEnlisted" ColumnName="cEnlisted" />
+          <ScalarProperty Name="KingdomId" ColumnName="KingdomId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Items">
+      <EntityTypeMapping TypeName="GameDataModel.Item">
+        <MappingFragment StoreEntitySet="Items">
+          <ScalarProperty Name="VaultId" ColumnName="VaultId" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Movement" ColumnName="Movement" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vaults">
+      <EntityTypeMapping TypeName="IsTypeOf(GameDataModel.Vault)">
+        <MappingFragment StoreEntitySet="Kingdoms">
+          <ScalarProperty Name="VaultId" ColumnName="VaultId" />
+          <ScalarProperty Name="KingdomId" ColumnName="KingdomId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

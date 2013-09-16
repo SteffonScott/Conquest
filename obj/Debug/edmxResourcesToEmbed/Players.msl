@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GameDataModelStoreContainer" CdmEntityContainer="GameDataEntities">
+    <EntitySetMapping Name="Armies">
+      <EntityTypeMapping TypeName="GameDataModel.Army">
+        <MappingFragment StoreEntitySet="Armies">
+          <ScalarProperty Name="Enlist" ColumnName="Enlist" />
+          <ScalarProperty Name="Support" ColumnName="Support" />
+          <ScalarProperty Name="Ranged" ColumnName="Ranged" />
+          <ScalarProperty Name="Special" ColumnName="Special" />
+          <ScalarProperty Name="Siege" ColumnName="Siege" />
+          <ScalarProperty Name="Elite" ColumnName="Elite" />
+          <ScalarProperty Name="Surrender" ColumnName="Surrender" />
+          <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Players">
+      <EntityTypeMapping TypeName="GameDataModel.Player">
+        <MappingFragment StoreEntitySet="Players">
+          <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Movement" ColumnName="Movement" />
+          <ScalarProperty Name="Structures" ColumnName="Structures" />
+          <ScalarProperty Name="Currency" ColumnName="Currency" />
+          <ScalarProperty Name="Land" ColumnName="Land" />
+          <ScalarProperty Name="Workers" ColumnName="Workers" />
+          <ScalarProperty Name="Food" ColumnName="Food" />
+          <ScalarProperty Name="Protection" ColumnName="Protection" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Honor" ColumnName="Honor" />
+          <ScalarProperty Name="Remorts" ColumnName="Remorts" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="KingdomName" ColumnName="KingdomName" />
+          <ScalarProperty Name="Taxrate" ColumnName="Taxrate" />
+          <ScalarProperty Name="ArmyId" ColumnName="ArmyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b2b4add02d004cefb48795ae503391f4" Name="Diagram1" ZoomLevel="77">
+        <EntityTypeShape EntityType="GameDataModel.Kingdom" Width="1.5" PointX="3" PointY="4" IsExpanded="true" FillColor="Teal" />
+        <EntityTypeShape EntityType="GameDataModel.Player" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" FillColor="Red" />
+        <AssociationConnector Association="GameDataModel.FK_Kingdoms_Players" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="GameDataModel.Army" Width="1.5" PointX="5.25" PointY="1.25" FillColor="Teal" IsExpanded="true" />
+        <AssociationConnector Association="GameDataModel.KingdomArmy" />
+        <EntityTypeShape EntityType="GameDataModel.Vault" Width="1.5" PointX="5.25" PointY="6.125" FillColor="Teal" />
+        <AssociationConnector Association="GameDataModel.KingdomVault" />
+        <EntityTypeShape EntityType="GameDataModel.Item" Width="1.5" PointX="7.5" PointY="7.5" />
+        <AssociationConnector Association="GameDataModel.VaultItem" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

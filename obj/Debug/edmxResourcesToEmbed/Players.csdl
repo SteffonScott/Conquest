@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GameDataModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="GameDataEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Armies" EntityType="GameDataModel.Army" />
+    <EntitySet Name="Players" EntityType="GameDataModel.Player" />
+    <AssociationSet Name="FK_Players_Armies" Association="GameDataModel.FK_Players_Armies">
+      <End Role="Armies" EntitySet="Armies" />
+      <End Role="Players" EntitySet="Players" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Army">
+    <Key>
+      <PropertyRef Name="PlayerId" />
+    </Key>
+    <Property Name="Enlist" Type="Int32" Nullable="false" />
+    <Property Name="Support" Type="Int32" Nullable="false" />
+    <Property Name="Ranged" Type="Int32" Nullable="false" />
+    <Property Name="Special" Type="Int32" Nullable="false" />
+    <Property Name="Siege" Type="Int32" Nullable="false" />
+    <Property Name="Elite" Type="Int32" Nullable="false" />
+    <Property Name="Surrender" Type="Double" Nullable="false" />
+    <Property Name="PlayerId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Player">
+    <Key>
+      <PropertyRef Name="PlayerId" />
+    </Key>
+    <Property Name="PlayerId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="12" Unicode="true" FixedLength="false" />
+    <Property Name="Movement" Type="Int32" Nullable="false" />
+    <Property Name="Structures" Type="Int32" Nullable="false" />
+    <Property Name="Currency" Type="Int32" Nullable="false" />
+    <Property Name="Land" Type="Int32" Nullable="false" />
+    <Property Name="Workers" Type="Int32" Nullable="false" />
+    <Property Name="Food" Type="Int32" Nullable="false" />
+    <Property Name="Protection" Type="Int32" Nullable="false" />
+    <Property Name="Level" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="Honor" Type="Int32" Nullable="false" />
+    <Property Name="Remorts" Type="Int32" Nullable="false" />
+    <Property Name="Gender" Type="GameDataModel.Gender" Nullable="false" />
+    <Property Name="KingdomName" Type="String" Nullable="false" MaxLength="16" Unicode="true" FixedLength="false" />
+    <Property Name="Taxrate" Type="Int32" Nullable="false" />
+    <Property Name="ArmyId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Army" Relationship="GameDataModel.FK_Players_Armies" FromRole="Players" ToRole="Armies" />
+  </EntityType>
+  <Association Name="FK_Players_Armies">
+    <End Role="Armies" Type="GameDataModel.Army" Multiplicity="1" />
+    <End Role="Players" Type="GameDataModel.Player" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Armies">
+        <PropertyRef Name="PlayerId" />
+      </Principal>
+      <Dependent Role="Players">
+        <PropertyRef Name="PlayerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EnumType Name="Gender" a:ExternalTypeName="Conquest.Gender" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+    <Member Name="Male" Value="1" />
+    <Member Name="Female" Value="2" />
+  </EnumType>
+</Schema>

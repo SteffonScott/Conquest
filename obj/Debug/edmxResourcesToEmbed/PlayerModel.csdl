@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PlayerModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="GameData" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Players" EntityType="PlayerModel.Player" />
+  </EntityContainer>
+  <EntityType Name="Player">
+    <Key>
+      <PropertyRef Name="PlayerId" />
+    </Key>
+    <Property Name="PlayerId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="12" Unicode="true" FixedLength="false" />
+    <Property Name="Movement" Type="Int32" Nullable="false" />
+    <Property Name="Structures" Type="Int32" Nullable="false" />
+    <Property Name="Currency" Type="Int32" Nullable="false" />
+    <Property Name="Land" Type="Int32" Nullable="false" />
+    <Property Name="Workers" Type="Int32" Nullable="false" />
+    <Property Name="Food" Type="Int32" Nullable="false" />
+    <Property Name="Protection" Type="Int32" Nullable="false" />
+    <Property Name="Level" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="Honor" Type="Int32" Nullable="false" />
+    <Property Name="Remorts" Type="Int32" Nullable="false" />
+    <Property Name="Gender" Type="Int32" Nullable="false" />
+    <Property Name="KingdomName" Type="String" Nullable="false" MaxLength="16" Unicode="true" FixedLength="false" />
+    <Property Name="Taxrate" Type="Int32" Nullable="false" />
+    <Property Type="Int32" Name="Army" Nullable="false" />
+  </EntityType>
+</Schema>

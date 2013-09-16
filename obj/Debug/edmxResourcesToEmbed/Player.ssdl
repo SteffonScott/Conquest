@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GameDataModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="GameDataModelStoreContainer">
+    <EntitySet Name="Items" EntityType="GameDataModel.Store.Items" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Kingdoms" EntityType="GameDataModel.Store.Kingdoms" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Players" EntityType="GameDataModel.Store.Players" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Kingdoms_Players" Association="GameDataModel.Store.FK_Kingdoms_Players">
+      <End Role="Players" EntitySet="Players" />
+      <End Role="Kingdoms" EntitySet="Kingdoms" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Items">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Movement" Type="int" Nullable="false" />
+    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="VaultId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Kingdoms">
+    <Key>
+      <PropertyRef Name="KingdomId" />
+    </Key>
+    <Property Name="KingdomId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Structures" Type="int" />
+    <Property Name="Currency" Type="int" />
+    <Property Name="Land" Type="int" />
+    <Property Name="Workers" Type="int" />
+    <Property Name="Food" Type="int" />
+    <Property Name="Protection" Type="int" />
+    <Property Name="Level" Type="int" />
+    <Property Name="Honor" Type="int" />
+    <Property Name="KingdomName" Type="nvarchar" MaxLength="16" />
+    <Property Name="Taxrate" Type="int" />
+    <Property Name="cEnlisted" Type="int" />
+    <Property Name="cSupport" Type="int" />
+    <Property Name="cRanged" Type="int" />
+    <Property Name="cSpecial" Type="int" />
+    <Property Name="cSiege" Type="int" />
+    <Property Name="cElite" Type="int" />
+    <Property Name="dEnlisted" Type="int" />
+    <Property Name="dSupport" Type="int" />
+    <Property Name="dRanged" Type="int" />
+    <Property Name="dSpecial" Type="int" />
+    <Property Name="dSiege" Type="int" />
+    <Property Name="dElite" Type="int" />
+    <Property Name="Surrender" Type="float" />
+    <Property Name="ArmyClass" Type="int" />
+    <Property Name="Continent" Type="int" />
+    <Property Name="PlayerId" Type="int" Nullable="false" />
+    <Property Name="VaultId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Players">
+    <Key>
+      <PropertyRef Name="PlayerId" />
+    </Key>
+    <Property Name="PlayerId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="12" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Remorts" Type="int" Nullable="false" />
+    <Property Name="Gender" Type="int" Nullable="false" />
+    <Property Name="PlayerClass" Type="int" Nullable="false" />
+    <Property Name="CurrentCont" Type="int" Nullable="false" />
+    <Property Name="NumAttacks" Type="int" Nullable="false" />
+    <Property Name="Movement" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Kingdoms_Players">
+    <End Role="Players" Type="GameDataModel.Store.Players" Multiplicity="1" />
+    <End Role="Kingdoms" Type="GameDataModel.Store.Kingdoms" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Players">
+        <PropertyRef Name="PlayerId" />
+      </Principal>
+      <Dependent Role="Kingdoms">
+        <PropertyRef Name="PlayerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
