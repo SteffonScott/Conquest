@@ -114,6 +114,7 @@
       <DependentUpon>Player.tt</DependentUpon>
     </Compile>
     <Compile Include="Players\Actions\Pray.cs" />
+    <Compile Include="Players\Actions\Review.cs" />
     <Compile Include="Players\Actions\ToggleGender.cs" />
     <Compile Include="Players\Items\Base\ItemLogic.cs" />
     <Compile Include="Players\Items\Items\AnimalAmulet.cs" />
@@ -148,7 +149,7 @@
     <Compile Include="Repositories\GenericRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Service\ActionHandler\Base\ActionLogic.cs" />
-    <Compile Include="Service\ActionHandler\Base\ActionResult.cs" />
+    <Compile Include="Service\ActionHandler\Base\GameActionResult.cs" />
     <Compile Include="Service\ActionHandler\PlayerAction\ActionTypes.cs" />
     <Compile Include="Service\ActionHandler\PlayerAction\PlayerActionResult.cs" />
     <Compile Include="Service\ConquestService.svc.cs">

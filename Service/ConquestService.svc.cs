@@ -150,8 +150,10 @@ namespace Conquest
         public PlayerActionResult DoAction(PlayerActionType type, int uid, string pparam = null, int amount = 0, string svalue = null) 
         {
             Player player;
-            PlayerAction action = new PlayerAction();
-            action.type = type;
+            PlayerActionResult result;
+            PlayerAction action = (PlayerAction)Activator.CreateInstance(null, string.Concat("Conquest.Players.Actions.", type.ToString())).Unwrap();
+            action.Logic = (ActionLogic)Activator.CreateInstance(null, string.Concat("Conquest.Players.Actions.", type.ToString(), "Logic")).Unwrap();
+            action.Logic.Action = action;
             // Verify executor exists
             if (!PlayerExists(uid))
             {
@@ -168,15 +170,15 @@ namespace Conquest
                 action.playerparam = GetPlayer(pparam);
             }
 
-            // Construct action and pass parameters
-            return player.DoAction(new PlayerAction(type, amount, svalue));
+                result = player.DoAction(action);
+                entities.Entry(player).State = System.Data.EntityState.Modified;
+                entities.SaveChanges();
+
+
+            return result;
         }
 
-        public void ToggleGender(int uid)
-        {
-            GetPlayer(uid).ToggleGender();
-            return;
-        }
+
         public void SetKingdomName(int uid, string kingdomname)
         {
             if (kingdomname.Length > 16) { return; }

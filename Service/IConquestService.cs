@@ -43,8 +43,6 @@ namespace Conquest
         [OperationContract]
         PlayerActionResult DoAction(PlayerActionType type, int uid, string pparam = null, int amount = 0, string svalue = null);
         [OperationContract]
-        void ToggleGender(int uid);
-        [OperationContract]
         void SetKingdomName(int uid, string kingdomname);
         #endregion
 

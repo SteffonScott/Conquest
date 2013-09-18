@@ -131,6 +131,8 @@ namespace Conquest
         public int Land { get; set; }
         [DataMember]
         public int ItemAmount { get; set; }
+        [DataMember]
+        public int Honor { get; set; }
 
         public KingdomInfo(Player player)
         {
@@ -145,6 +147,7 @@ namespace Conquest
             this.Protection = (int)player.CurrentKingdom.Protection;
             this.Land = (int)player.CurrentKingdom.Land;
             this.ItemAmount = (int)player.CurrentKingdom.Vault.Items.Count();
+            this.Honor = (int)player.CurrentKingdom.Honor;
         }
     }
     public partial class Player : DbContext
@@ -163,7 +166,10 @@ namespace Conquest
             this.Kingdom.Add(new Kingdom(this.CurrentCont));
             this.CurrentKingdom.Vault.AddItem(new Item(ItemType.LureVulture));
             this.CurrentKingdom.Vault.AddItem(new Item(ItemType.PotSpeed));
-            this.DoAction(new PlayerAction(PlayerActionType.Pray));
+            PlayerAction action = (PlayerAction)Activator.CreateInstance(null, string.Concat("Conquest.Players.Actions.Pray")).Unwrap();
+            action.Logic = (ActionLogic)Activator.CreateInstance(null, string.Concat("Conquest.Players.Actions.", "PrayLogic")).Unwrap();
+            action.Logic.Action = action;
+            this.DoAction(action);
         }
 
         public Kingdom CurrentKingdom
@@ -174,12 +180,7 @@ namespace Conquest
             }
             private set { }
         }
-        public CommandResult ToggleGender()
-        {
-            if (this.Gender == Gender.Male) { this.Gender = Gender.Male; }
-                else { this.Gender = Gender.Male; }
-            return new CommandResult(true);
-        }
+
         public CommandResult Use(ItemType itype)
         {
             if (!CurrentKingdom.Vault.ContainsItem(itype))
@@ -200,7 +201,8 @@ namespace Conquest
         public PlayerActionResult DoAction(PlayerAction action)
         {
             action.player = this;
-            return action.Execute();
+            PlayerActionResult result = action.Execute();
+            return result;
         }
 
 

@@ -9,7 +9,7 @@ namespace Conquest.Service
 {
     [DataContract]
     [KnownType(typeof(PlayerActionResult))]
-    public class ActionResult
+    public class GameActionResult
     {
         [DataMember]
         public bool succ { get; set; }

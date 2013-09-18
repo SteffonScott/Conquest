@@ -8,7 +8,7 @@ using System.Runtime.Serialization;
 namespace Conquest.Service.Actions
 {
     [DataContract]
-    public class PlayerActionResult : ActionResult
+    public class PlayerActionResult : GameActionResult
     {
         [DataMember]
         public ArmyInfo army1 { get; set; }
