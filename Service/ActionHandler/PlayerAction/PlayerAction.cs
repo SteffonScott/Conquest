@@ -14,7 +14,7 @@ namespace Conquest.Service.Actions
         public PlayerActionType type { get; set; }
         public Player player { get; set; }
         public Player playerparam { get; set; }
-        private int amount { get; set; }
+        public int amount { get; set; }
         private string svalue { get; set; }
         public dynamic Logic { get; set; }
         public bool reqParams { get; set; }

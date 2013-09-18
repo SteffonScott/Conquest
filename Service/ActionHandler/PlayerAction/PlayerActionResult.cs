@@ -11,6 +11,8 @@ namespace Conquest.Service.Actions
     public class PlayerActionResult : GameActionResult
     {
         [DataMember]
+        public KingdomInfo kingdom1 { get; set; }
+        [DataMember]
         public ArmyInfo army1 { get; set; }
         [DataMember]
         public ArmyInfo army2 { get; set; }
@@ -18,12 +20,13 @@ namespace Conquest.Service.Actions
         public int amount { get; set; }
 
 
-        public PlayerActionResult(bool succ = true, ResultType result = ResultType.NotFound, ArmyInfo army1 = null, ArmyInfo army2 = null, int amount = 0)
+        public PlayerActionResult(bool succ = true, ResultType result = ResultType.NotFound, ArmyInfo army1 = null, ArmyInfo army2 = null, int amount = 0, KingdomInfo kingdom1 = null)
         {
             this.succ = succ;
             this.resulttype = result;
             this.army1 = army1;
             this.army2 = army2;
+            this.kingdom1 = kingdom1;
             this.amount = amount;
         }
     }

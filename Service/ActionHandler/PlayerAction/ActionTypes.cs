@@ -10,11 +10,15 @@ namespace Conquest.Service.Actions
     public enum PlayerActionType
     {
         [EnumMember]
+        Person,
+        [EnumMember]
         Review,
         [EnumMember]
         Pray,
         [EnumMember]
-        Tavern
+        Tavern,
+        [EnumMember]
+        Roll
     }
 
 }

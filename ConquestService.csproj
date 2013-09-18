@@ -113,8 +113,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Player.tt</DependentUpon>
     </Compile>
+    <Compile Include="Players\Actions\Person.cs" />
     <Compile Include="Players\Actions\Pray.cs" />
     <Compile Include="Players\Actions\Review.cs" />
+    <Compile Include="Players\Actions\Roll.cs" />
     <Compile Include="Players\Actions\ToggleGender.cs" />
     <Compile Include="Players\Items\Base\ItemLogic.cs" />
     <Compile Include="Players\Items\Items\AnimalAmulet.cs" />

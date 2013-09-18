@@ -30,7 +30,16 @@ namespace Conquest
         [EnumMember]
         IsProtected = 5,
         [EnumMember]
-        NotFound = 6
+        NotFound = 6,
+        [EnumMember]
+        InvalidClass = 7,
+        [EnumMember]
+        InsufficientFunds = 8,
+        [EnumMember]
+        Won = 9,
+        [EnumMember]
+        Lost = 10
+
     }
     [DataContract]
     [KnownType(typeof(ReviewResult))]
@@ -154,6 +163,7 @@ namespace Conquest
             PlayerAction action = (PlayerAction)Activator.CreateInstance(null, string.Concat("Conquest.Players.Actions.", type.ToString())).Unwrap();
             action.Logic = (ActionLogic)Activator.CreateInstance(null, string.Concat("Conquest.Players.Actions.", type.ToString(), "Logic")).Unwrap();
             action.Logic.Action = action;
+            action.amount = amount;
             // Verify executor exists
             if (!PlayerExists(uid))
             {

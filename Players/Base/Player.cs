@@ -166,10 +166,6 @@ namespace Conquest
             this.Kingdom.Add(new Kingdom(this.CurrentCont));
             this.CurrentKingdom.Vault.AddItem(new Item(ItemType.LureVulture));
             this.CurrentKingdom.Vault.AddItem(new Item(ItemType.PotSpeed));
-            PlayerAction action = (PlayerAction)Activator.CreateInstance(null, string.Concat("Conquest.Players.Actions.Pray")).Unwrap();
-            action.Logic = (ActionLogic)Activator.CreateInstance(null, string.Concat("Conquest.Players.Actions.", "PrayLogic")).Unwrap();
-            action.Logic.Action = action;
-            this.DoAction(action);
         }
 
         public Kingdom CurrentKingdom
